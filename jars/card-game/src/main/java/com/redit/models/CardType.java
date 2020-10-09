@@ -7,14 +7,23 @@ package com.redit.models;
 
 public enum CardType {
 
-    ACE(1), KING(13), QUEEN(12), JACK(11),
+    ACE(1, 14), KING(13), QUEEN(12), JACK(11),
     TENS(10), NINE(9), EIGHT(8), SEVEN(7), SIX(6),
     FIVE(5), FOUR(4), THREE(3), TWO(2);
 
-    CardType(int value) {
+    int numberValue, faceValue;
+
+    CardType(int numberValue, int faceValue) {
+        this.numberValue = numberValue;
+        this.faceValue = faceValue;
     }
 
-    public CardType[] getAllTypes() {
+    CardType(int numberValue) {
+        this.numberValue = numberValue;
+        this.faceValue = numberValue;
+    }
+
+    public static CardType[] getAllTypes() {
         return CardType.class.getEnumConstants();
     }
 

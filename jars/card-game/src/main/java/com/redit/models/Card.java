@@ -17,8 +17,12 @@ public class Card {
         this.type = type;
     }
 
-    public int getValue() {
-        return 0;
+    public int getFaceValue() {
+        return this.type.faceValue;
+    }
+
+    public int getNumberValue() {
+        return this.type.numberValue;
     }
 
     @Override
@@ -32,6 +36,11 @@ public class Card {
     @Override
     public int hashCode() {
         return Objects.hash(suite, type);
+    }
+
+    @Override
+    public String toString() {
+        return "Card{" + suite + "," + type + '}';
     }
 }
 

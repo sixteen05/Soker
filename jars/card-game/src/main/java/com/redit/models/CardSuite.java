@@ -9,7 +9,7 @@ public enum CardSuite {
 
     CLUBS, DIAMONDS, HEARTS, SPADES;
 
-    public CardSuite[] getAllSuites() {
+    public static CardSuite[] getAllSuites() {
         return CardSuite.class.getEnumConstants();
     }
 }

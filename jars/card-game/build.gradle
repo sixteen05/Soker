@@ -10,6 +10,7 @@ repositories {
 
 dependencies {
     testCompile 'junit:junit:4.13'
+    testCompile 'org.assertj:assertj-db:2.0.1'
 }
 
 jar {
