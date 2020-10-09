@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 
 public class CardDeal {
 
-    public List<Card> cards = new ArrayList<>();
+    private final List<Card> cards = new ArrayList<>();
 
     public CardDeal(List<Card> cards) {
         this.cards.addAll(cards);

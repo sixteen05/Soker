@@ -19,10 +19,12 @@ public class Main {
     public static void main(String[] args) {
 
         List<Player> allPlayers = new ArrayList<>();
+        boolean emulateWait = true;
         if (args != null && args.length == 4) {
             for (String name : args) {
                 allPlayers.add(new Player(name));
             }
+            emulateWait = false;
         } else {
             Scanner scanner = new Scanner(System.in);
             System.out.println("There are four players in the game. Enter each of their names");
@@ -38,8 +40,9 @@ public class Main {
             while (game.getState() != GameState.END) {
                 System.out.print("Dealing cards");
                 for (int i = 0; i < 3; i++) {
-                    //noinspection BusyWait
-                    Thread.sleep(500);
+                    if (emulateWait)
+                        //noinspection BusyWait
+                        Thread.sleep(500);
                     System.out.print(".");
                 }
                 System.out.println();
