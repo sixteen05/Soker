@@ -25,7 +25,7 @@ public class GameTests {
         }
         Game game = new Game(players);
         List<Card> completeDeck = game.getCurrentDeck();
-        System.out.println(completeDeck);
+
         assertThat(completeDeck.size()).isEqualTo(52);
         assertThat(completeDeck).asList().doesNotHaveDuplicates();
         assertThat(completeDeck).asList().doesNotHaveDuplicates();

@@ -1,6 +1,7 @@
 package com.redit.models;
 
 import com.redit.util.CardComparators;
+import com.redit.util.CoreUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,8 +32,11 @@ public class CardDeal {
      * Before Draw it would be card size as per game
      */
     public static CardDeal createDeal(int size, List<Card> cardDeck) {
-
-        return new CardDeal(new ArrayList<>());
+        List<Card> cardsFetched = new ArrayList<>();
+        for (int cardFetch = 0; cardFetch < size; cardFetch++) {
+            cardsFetched.add(CoreUtils.randomChoose(cardDeck));
+        }
+        return new CardDeal(cardsFetched);
     }
 
     /**
@@ -115,4 +119,8 @@ public class CardDeal {
         return this.cards.get(0).getNumberValue();
     }
 
+    @Override
+    public String toString() {
+        return "CardDeal{ cards=" + cards + "}";
+    }
 }
