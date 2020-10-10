@@ -53,10 +53,13 @@ public class Game {
     public void dealCards() throws InvalidStateException {
         if (state == GameState.END)
             throw new InvalidStateException("Game has ended. Cannot deal more cards");
+        int currentDealSize = state == GameState.DRAW ? 1 : this.dealSize;
         this.numberOfDeals += 1;
         // Used to deal cards to all players
         for (Player eachPlayer : playingPlayers)
-            playerDeals.get(eachPlayer).add(CardDeal.createDeal(this.dealSize, this.currentDeck));
+            playerDeals
+                    .get(eachPlayer)
+                    .add(CardDeal.createDeal(currentDealSize, this.currentDeck));
         checkForWinner();
     }
 
@@ -77,13 +80,13 @@ public class Game {
         return new ArrayList<>(playingPlayers);
     }
 
-    private void checkForWinner() {
+    private void checkForWinner() throws InvalidStateException {
         int maxScore = -1;
         List<Player> winners = new ArrayList<>();
         for (Player eachPlayer : playingPlayers) {
             List<CardDeal> allDeals = playerDeals.get(eachPlayer);
             // If player has been dealt the last deal only then check
-            int playerScore = numberOfDeals > 1 ?
+            int playerScore = state == GameState.DRAW ?
                     allDeals.get(numberOfDeals - 1).getDrawScore() :
                     allDeals.get(numberOfDeals - 1).getScore();
             if (playerScore > maxScore) {

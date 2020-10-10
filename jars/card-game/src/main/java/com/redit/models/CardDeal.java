@@ -1,5 +1,6 @@
 package com.redit.models;
 
+import com.redit.exceptions.InvalidStateException;
 import com.redit.util.CardComparators;
 import com.redit.util.CoreUtils;
 
@@ -53,7 +54,7 @@ public class CardDeal {
      * Scoring
      * - Trail score ranges: 1001 - 1013
      * - Sequence of 3 score ranges: 501 - 511
-     * - Sequence of 2 score ranges: 101 - 112
+     * - Pair of cards score ranges: 101 - 112
      * - Top card ranges: 1 - 13
      **/
     public int getScore() {
@@ -116,7 +117,9 @@ public class CardDeal {
      * Scoring:
      * - Top card ranges: 1 - 13
      **/
-    public int getDrawScore() {
+    public int getDrawScore() throws InvalidStateException {
+        if (this.cards.size() != 1)
+            throw new InvalidStateException("Deal has more than one card. Cannot check draw score");
         return this.cards.get(0).getNumberValue();
     }
 
@@ -134,7 +137,7 @@ public class CardDeal {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         CardDeal cardDeal = (CardDeal) o;
-        return Objects.equals(cards, cardDeal.cards);
+        return cards.containsAll(cardDeal.cards) && cardDeal.cards.containsAll(cards);
     }
 
     @Override

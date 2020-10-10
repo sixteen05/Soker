@@ -1,11 +1,11 @@
 package com.redit.core;
 
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 public class MainTest {
 
-    @BeforeClass
+    @BeforeAll
     public static void beforeClass() {
         System.out.println("Before test start");
     }
