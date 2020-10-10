@@ -1,3 +1,6 @@
+
+// Following script has been sourced form https://medium.com/@wasyl/pretty-tests-summary-in-gradle-744804dd676c
+
 import groovy.time.TimeCategory
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.gradle.api.tasks.testing.logging.TestLogEvent
