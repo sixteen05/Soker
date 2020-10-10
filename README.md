@@ -14,6 +14,9 @@ Solution for below given problem statement.
  - Make sure to run build.
  - Run `java -jar jars/card-game/build/libs/card-game.jar`
 
+## Design
+![Design Sketch](./CardGameDesign.png)
+
 ## Problem Statement
 
 The festival season is here and you realise it's hard to play all those complicated card games when you're drunk.
@@ -28,7 +31,8 @@ You decide to create a simple luck-based game for people to play when they have 
 #### Victory:
  - A trail (three cards of the same number) is the highest possible combination.
  - The next highest is a sequence (numbers in order, e.g., 4,5,6. A is considered to have a value of 1).
- - The next highest is a pair of cards (e.g.: two Kings or two 10s). ========== We are assuming A > K here
+ - The next highest is a pair of cards (e.g.: two Kings or two 10s).
+     > **Note:** As problem statement does not mentioned it, we are assuming A > K here
  - If all else fails, the top card (by number value wins).
  - If the top card has the same value, each of the tied players draws a single card from the deck until a winner is found.
  - Only the newly drawn cards are compared to decide a tie. The top card wins a tie.

@@ -5,6 +5,7 @@ import com.redit.util.CoreUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 /**
@@ -119,8 +120,25 @@ public class CardDeal {
         return this.cards.get(0).getNumberValue();
     }
 
+    public List<Card> showDealtCards() {
+        return new ArrayList<>(cards);
+    }
+
     @Override
     public String toString() {
         return "CardDeal{ cards=" + cards + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CardDeal cardDeal = (CardDeal) o;
+        return Objects.equals(cards, cardDeal.cards);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(cards);
     }
 }
