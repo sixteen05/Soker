@@ -27,8 +27,7 @@ public class Card {
 
     @Override
     public boolean equals(Object other) {
-        if (other == null || getClass() != other.getClass())
-            return false;
+        if (other == null || getClass() != other.getClass()) return false;
         Card otherCard = (Card) other;
         return suite == otherCard.suite && type == otherCard.type;
     }

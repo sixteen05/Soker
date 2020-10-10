@@ -5,7 +5,6 @@ import java.util.Objects;
 /**
  * Created By : Lalit Umbarkar
  * Created On : 09/10/20
- * Organisation: CustomerXPs Software Private Ltd.
  */
 
 public class Player {
@@ -44,5 +43,10 @@ public class Player {
     @Override
     public int hashCode() {
         return Objects.hash(name);
+    }
+
+    @Override
+    public String toString() {
+        return "Player{name='" + name + "'}";
     }
 }

@@ -8,7 +8,6 @@ import java.util.*;
 /**
  * Created By : Lalit Umbarkar
  * Created On : 09/10/20
- * Organisation: CustomerXPs Software Private Ltd.
  */
 
 public class Game {
@@ -123,4 +122,9 @@ public class Game {
         }
     }
 
+    @Override
+    public String toString() {
+        return "Game{players=" + players + ", playerDeals=" + playerDeals + ", dealSize=" + dealSize +
+                ", winner=" + winner + ", state=" + state + ", currentDeck=" + currentDeck + "}";
+    }
 }

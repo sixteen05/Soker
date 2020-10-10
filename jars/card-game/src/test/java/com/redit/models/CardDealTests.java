@@ -14,7 +14,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 /**
  * Created By : Lalit Umbarkar
  * Created On : 09/10/20
- * Organisation: CustomerXPs Software Private Ltd.
  */
 
 public class CardDealTests {
