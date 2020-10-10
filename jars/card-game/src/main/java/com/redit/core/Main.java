@@ -19,12 +19,12 @@ public class Main {
     public static void main(String[] args) {
 
         List<Player> allPlayers = new ArrayList<>();
-        boolean emulateWait = true;
-        if (args != null && args.length == 4) {
+        boolean isCliGame = true;
+        if (args != null && args.length > 0) {
             for (String name : args) {
                 allPlayers.add(new Player(name));
             }
-            emulateWait = false;
+            isCliGame = false;
         } else {
             Scanner scanner = new Scanner(System.in);
             System.out.println("There are four players in the game. Enter each of their names");
@@ -35,26 +35,30 @@ public class Main {
             }
         }
         Game game = new Game(allPlayers);
-        System.out.println("All four will be dealt 3 cards now.");
+        if (isCliGame)
+            System.out.println("All four will be dealt 3 cards now.");
         try {
             while (game.getState() != GameState.END) {
-                System.out.print("Dealing cards");
-                for (int i = 0; i < 3; i++) {
-                    if (emulateWait)
+                if (isCliGame) {
+                    System.out.print("Dealing cards");
+                    for (int i = 0; i < 3; i++) {
                         //noinspection BusyWait
                         Thread.sleep(500);
-                    System.out.print(".");
+                        System.out.print(".");
+                    }
+                    System.out.println();
                 }
-                System.out.println();
                 game.dealCards();
-                if (game.getWinner().isPresent()) {
+                if (isCliGame && game.getWinner().isPresent()) {
                     System.out.println(game.getWinner().get().getName() + " won the game");
-                } else {
+                } else if (isCliGame) {
                     System.out.println("There was a draw in " + game.getPlayingPlayers());
                 }
             }
-            System.out.println("The dealt cards to players were: ");
-            game.showPlayerCards();
+            if (isCliGame) {
+                System.out.println("The dealt cards to players were: ");
+                game.showPlayerCards();
+            }
         } catch (InvalidStateException e) {
             System.err.println("Some internal error occurred.");
         } catch (InterruptedException e) {

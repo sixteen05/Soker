@@ -7,8 +7,8 @@ Solution for below given problem statement.
 
 #### Build
 
- - Have gradle installed on system
- - Run `gradle build` to build the jar and run the tests.
+ - Have Java installed on system and JAVA_HOME set
+ - Run `./gradlew build` to build the jar and run the tests.
 
 #### Run
  - Make sure to run build.

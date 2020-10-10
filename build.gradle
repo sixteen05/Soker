@@ -1,1 +1,3 @@
 
+
+apply from: "tests.gradle"
